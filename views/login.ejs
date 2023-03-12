@@ -1,0 +1,62 @@
+<%- include('partials/header');-%>
+
+    <!-- ? Alert box message -->
+    <% if(alertMessage.length> 0) { %>
+
+        <div class="alert alert-danger d-flex align-items-center" role="alert" style="
+    height: 4rem;
+    margin-bottom: 0;
+    padding: 0 6%;">
+            <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:" style="width: 2rem;">
+                <use xlink:href="#exclamation-triangle-fill" />
+            </svg>
+            <div>
+                <strong> Error, </strong>
+                <%= alertMessage %>
+            </div>
+        </div>
+
+        <% } %>
+            <div class="container">
+                <div class="register-title">
+                    <h1>Admin Login</h1>
+                    <hr>
+                </div>
+
+                <div class="container col-xl-10 col-xxl-8">
+                    <div class="row align-items-center g-lg-5">
+                        <div class="col-lg-6 col-sm-12 text-center text-lg-start">
+                            <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_xlmz9xwm.json"
+                                background="transparent" speed="1" style="max-width: 500px; height: 400px;" loop
+                                autoplay></lottie-player>
+
+                        </div>
+                        <div class="col-sm-12 mx-auto col-lg-6">
+                            <div class="wrapper fadeInDown">
+                                <div id="formContent">
+                                    <!-- Tabs Titles -->
+
+                                    <!-- Icon -->
+                                    <div class="fadeIn first py-4">
+                                        <h3>Login</h3>
+                                    </div>
+
+                                    <!-- Login Form -->
+                                    <form method="post" action="/admin/login">
+                                        <input type="email" class="fadeIn second" name="email" placeholder="Email">
+                                        <input type="password" class="fadeIn third" name="password"
+                                            placeholder="Password">
+                                        <button id="submit-btn" type="submit">Login</button>
+                                    </form>
+
+                                    <div id="formFooter">
+                                        <a class="underlineHover" href="/admin/login/forgot">Forgot Password?</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%- include('partials/footer');-%>

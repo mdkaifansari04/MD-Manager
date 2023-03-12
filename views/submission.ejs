@@ -1,0 +1,81 @@
+<%- include('partials/header');-%>
+    <!-- ?SUCCESS ALERT BOX  -->
+    <% if( message.length> 0) { %>
+        <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert" style="
+    height: 4rem;
+	margin-bottom: 0;
+	padding: 0 6%;">
+            <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:" style="width: 2rem;">
+                <use xlink:href="#check-circle-fill" />
+            </svg>
+            <div>
+                <strong>Sucessfully :</strong>
+                <%= message %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+        </div>
+        <% } %>
+        
+    <!-- ? Alert box message -->
+    <% if(alertMessage.length> 0) { %>
+
+        <div class="alert alert-danger d-flex align-items-center" role="alert" style="
+    height: 4rem;
+    margin-bottom: 0;
+    padding: 0 6%;">
+            <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:" style="width: 2rem;">
+                <use xlink:href="#exclamation-triangle-fill" />
+            </svg>
+            <div>
+                <strong> Error, </strong>
+                <%= alertMessage %>
+            </div>
+        </div>
+
+        <% } %>
+
+    <div class="container">
+        <div class="register-title">
+            <h1>Submit Fees</h1>
+            <hr>
+        </div>
+
+        <div class="container col-xl-10 col-xxl-8">
+            <div class="row align-items-center g-lg-5">
+                <div class="col-lg-6 col-sm-12 text-center text-lg-start">
+                    <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_ltbqacam.json"
+                        background="transparent" speed="1" style="max-width: 500px; height: 400px;" loop
+                        autoplay></lottie-player>
+                </div>
+                <div class="col-sm-12 mx-auto col-lg-6">
+                    <div class="wrapper fadeInDown">
+                        <div id="formContent">
+                            <!-- Tabs Titles -->
+
+                            <!-- Icon -->
+                            <div class="fadeIn first py-4">
+                                <h3>Enter student details</h3>
+                            </div>
+
+                            <!-- Login Form -->
+                            <form method="post" action="/student/submission?_method=PATCH">
+                                <input type="email" class="fadeIn second" name="email" placeholder="Email">
+                                <input type="number" class="fadeIn third" name="amount" placeholder="Amount">
+                                <!-- <input type="hidden" name="_method" value="PUT"> -->
+                                <button id="submit-btn" type="submit">Submit</button>
+                            </form>
+
+                            <!-- Remind Passowrd
+                            <div id="formFooter">
+                                <a class="underlineHover" href="#">Forgot Password?</a>
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('partials/footer');-%>

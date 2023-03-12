@@ -1,0 +1,124 @@
+<%- include('partials/header');-%>
+
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <div class="container">
+        <div class="register-title">
+            <h1>Student Details</h1>
+            <hr>
+        </div>
+
+        <div class="student-detail">
+            <div>
+                <div class="student-card">
+                    <div class="card-body ">
+                        <blockquote class="blockquote blockquote-custom bg-white px-3 pt-4">
+                            <p class="mb-0 mt-2 font-italic">
+
+                            <div class="row">
+                                <div class="col">
+                                    <p>Name :</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <%= student.name%>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Enrollment No. :</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <%= student.enrollmentNo%>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Branch :</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <%= student.branch%>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Semester :</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <%= student.semester%>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Address :</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <%= student.address%>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Pincode :</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <%= student.pincode%>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Annual Fees : </p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <%= student.totalFees%>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Phone No :</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <%= student.phoneNo%>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Email :</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <%= student.email%>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Paid Fees :</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <%= student.paid %>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Remaining Fees :</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <%= student.totalFees-student.paid %>
+                                </div>
+                            </div>
+                            <a href="#" class="text-info">@MD Manager</a>."
+                            </p>
+                            <footer class="blockquote-footer pt-4 mt-4 border-top">
+                                <div class="login-btn">
+                                    <!-- <a id="login-btn">Edit</a> -->
+                                    <form action="/student/delete/<%=student._id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="action-btn"><a id="login-btn" >Delete</a></button>
+                                    </form>
+                                    
+                                </div>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/footer');-%>

@@ -1,0 +1,180 @@
+<%- include('partials/header');-%>
+
+    <!--? SUCCESS MESSAGE  -->
+    <% if( message.length> 0) { %>
+        <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert" style="
+height: 4rem;
+margin-bottom: 0;
+padding: 0 6%;">
+            <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:" style="width: 2rem;">
+                <use xlink:href="#check-circle-fill" />
+            </svg>
+            <div>
+                <strong>Sucessfully :</strong>
+                <%= message %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+        </div>
+        <% } %>
+
+            <!-- ? Alert box message -->
+    <% if(alertMessage.length> 0) { %>
+
+        <div class="alert alert-danger d-flex align-items-center" role="alert" style="
+    height: 4rem;
+    margin-bottom: 0;
+    padding: 0 6%;">
+            <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:" style="width: 2rem;">
+                <use xlink:href="#exclamation-triangle-fill" />
+            </svg>
+            <div>
+                <strong> Error, </strong>
+                <%= alertMessage %>
+            </div>
+        </div>
+
+        <% } %>
+
+            <div class="container">
+                <div class="register-title">
+                    <h1>Register</h1>
+                    <hr>
+                </div>
+                <div class="form-container mt-5">
+                    <section class="gradient-custom">
+                        <div class="form-container">
+                            <div class="row justify-content-center align-items-center h-100">
+                                <div class="col-12 col-lg-9 col-xl-7 w-100 ">
+                                    <div class="card shadow-2-strong card-registration" style="border-radius: 0px;">
+                                        <div class="card-body p-4 p-md-5 registration-card">
+                                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Enter student details</h3>
+                                            <form method="post" action="/student/register">
+
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-4">
+
+                                                        <div class="form-outline">
+                                                            <input type="text"
+                                                                class="form-control form-control-lg input" name="name"
+                                                                placeholder="Name" required />
+                                                        </div><br>
+
+                                                        <div class="form-outline">
+                                                            <input type="number" class="form-control form-control-lg"
+                                                                name="enrollmentNo" placeholder="Enrollment No."
+                                                                required />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-6 mb-4">
+
+                                                        <div class="form-outline">
+                                                            <input type="email" name="email" name="email" required
+                                                                class="form-control form-control-lg"
+                                                                placeholder="Email" />
+                                                        </div><br>
+
+                                                        <div class="form-outline">
+                                                            <input type="number" id="lastName" name="phoneNo" required
+                                                                class="form-control form-control-lg"
+                                                                placeholder="Phone Number" />
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                                                        <div class="form-outline datepicker w-100">
+                                                            <input type="text" class="form-control form-control-lg"
+                                                                name="address" required
+                                                                placeholder="Permanent Address" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-6 mb-4">
+
+                                                        <h6 class="mb-2 pb-1">Gender: </h6>
+
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" required
+                                                                name="gender" />
+                                                            <label class="form-check-label"
+                                                                for="maleGender">Female</label>
+                                                        </div>
+
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" required
+                                                                name="gender" id="maleGender" value="male" />
+                                                            <label class="form-check-label"
+                                                                for="maleGender">Male</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-4 pb-2">
+
+                                                        <div class="form-outline">
+                                                            <input type="number" id="emailAddress" name="pincode"
+                                                                required class="form-control form-control-lg"
+                                                                placeholder="Pincode" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-6 mb-4 pb-2">
+
+                                                        <div class="form-outline">
+                                                            <input type="number" id="phoneNumber" name="totalFees"
+                                                                required class="form-control form-control-lg"
+                                                                placeholder="Totol fees" />
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <select required class="select form-control-lg" name="branch">
+                                                            <option value="NULL" disabled>Branch</option>
+                                                            <option value="CO">CO</option>
+                                                            <option value="ME">ME</option>
+                                                            <option value="EE">EE</option>
+                                                            <option value="CE">CE</option>
+                                                        </select>
+                                                        <label class="form-label select-label">Branch</label>
+
+                                                    </div><br>
+                                                    <div class="col-md-6">
+
+                                                        <select required class="select form-control-lg" name="semester">
+                                                            <option value="NULL" disabled>Semester</option>
+                                                            <option value="1st">1st</option>
+                                                            <option value="2nd">2nd</option>
+                                                            <option value="3rd">3rd</option>
+                                                            <option value="4th">4th</option>
+                                                            <option value="5th">5th</option>
+                                                            <option value="6th">6th</option>
+                                                        </select>
+                                                        <label class="form-label select-label">Semester</label>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex justify-content-center pt-2">
+                                                    <input id="submit-btn" class="btn btn-primary btn-lg submit-btn"
+                                                        type="submit" value="Submit" />
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+<%- include('partials/footer');-%>
