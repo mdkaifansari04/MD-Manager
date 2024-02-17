@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const bcrypt = require("bcrypt")
 const bodyParser = require("body-parser")
@@ -21,13 +22,11 @@ router.post("/login", async (req, res) => {
         if (foundUser) {
             const result = await bcrypt.compare(req.body.password, foundUser.password)
             if (result) {
-
                 userSession(req, res, () => {
                     console.log("Middleware called")
                 })
                 req.flash('message', "Logined")
                 res.redirect('/')
-
             } else {
                 req.flash("alert", "Wrong Password")
                 res.redirect('/login')
@@ -36,7 +35,6 @@ router.post("/login", async (req, res) => {
             req.flash("alert", "Wrong Credentials")
             res.redirect('/login')
         }
-
     } catch (error) {
         res.send("Server Error : " + error)
     }
@@ -106,7 +104,7 @@ router.post('/signup', async (req, res) => {
     }
 })
 
-router.get('/login/forgot',otpSession, async (req, res) => {
+router.get('/login/forgot', otpSession, async (req, res) => {
     let alert = req.flash('alert')
     let admin = await Admin.findOne({})
     let testAccount = await nodemailer.createTestAccount()
@@ -116,8 +114,8 @@ router.get('/login/forgot',otpSession, async (req, res) => {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-            user: "testappemail100@gmail.com",
-            pass: "xieqspdammnhdxou",
+            user: "stuartansari3@gmail.com",
+            pass: "lesnqteupxdfzcfz",
         },
     })
 
@@ -133,15 +131,15 @@ router.get('/login/forgot',otpSession, async (req, res) => {
     }).then(() => {
         res.render('acception/otp', {
             email: admin.email,
-            alertMessage : alert
+            alertMessage: alert
         })
         console.log("Sent mail ")
     })
-    .catch(err =>
+        .catch(err =>
             res.render('acception/otp', {
-            email: admin.email,
-            alertMessage : alert
-        }))
+                email: admin.email,
+                alertMessage: alert
+            }))
 })
 
 
@@ -149,11 +147,11 @@ router.post('/otp', (req, res) => {
     try {
         let alert = req.flash('alert')
         let otp = req.session.otp
-        if( otp == req.body.otp){
+        if (otp == req.body.otp) {
             res.render('acception/updatePassword', {
-                alertMessage : alert
+                alertMessage: alert
             })
-        } else{
+        } else {
             req.flash("alert", "Wrong OTP, An another OTP is send to your email")
             res.redirect('/admin/login/forgot')
         }
@@ -163,7 +161,7 @@ router.post('/otp', (req, res) => {
 })
 
 
-router.patch('/updatePassword', (req,res) =>{
+router.patch('/updatePassword', (req, res) => {
     if (req.body.password == req.body.confirmPassword) {
         bcrypt.hash(req.body.password, 10, async function (err, hash) {
             if (err) {
@@ -173,24 +171,24 @@ router.patch('/updatePassword', (req,res) =>{
                 let foundAdmin = await Admin.findOne({})
                 console.log(foundAdmin)
                 await Admin.findOneAndUpdate({}, {
-                    $set:{
-                        password : hash
+                    $set: {
+                        password: hash
                     }
-                }).then(() =>{
+                }).then(() => {
                     req.flash("message", "Password Updated")
                     req.session.email = foundAdmin.email
                     res.redirect('/')
                 })
-                .catch((err) =>{
-                    res.render('acception/updatePassword', {
-                        alertMessage : "Something went wrong, Please try again"
+                    .catch((err) => {
+                        res.render('acception/updatePassword', {
+                            alertMessage: "Something went wrong, Please try again"
+                        })
                     })
-                })
             }
         })
     } else {
         res.render('acception/updatePassword', {
-            alertMessage : "Password is not same"
+            alertMessage: "Password is not same"
         })
     }
 })

@@ -10,7 +10,6 @@ const studentSchema = new mongoose.Schema({
         type : String,
         unique : true
     },
-    
     branch : String,
     semester: String,
     address: String,

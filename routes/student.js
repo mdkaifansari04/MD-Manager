@@ -1,11 +1,18 @@
 const express = require('express')
-const Student = require("../models/student")
 const bodyParser = require("body-parser")
 const nodemailer = require("nodemailer")
+const axios = require('axios')
+const FormData = require('form-data')
+const fs = require('fs')
+const Student = require("../models/student")
+
 const router = express.Router()
 const app = express()
+const formData = new FormData()
 
 app.use(bodyParser.urlencoded({ extended: true }))
+
+
 
 //GET STUDENT BY ID
 router.get('/id/:id', async (req, res) => {
@@ -128,8 +135,8 @@ router.patch('/submission', async (req, res) => {
                             port: 587,
                             secure: false, // true for 465, false for other ports
                             auth: {
-                                user: "amdkaif843@gmail.com",
-                                pass: "qdailrpjzktnbjrn",
+                                user: "stuartansari3@gmail.com",
+                                pass: "lesnqteupxdfzcfz",
                             },
                         });
                         let date = new Date()
